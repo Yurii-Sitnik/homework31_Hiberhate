@@ -1,19 +1,14 @@
 package org.example;
 
-import org.example.entity.AddressEntity;
-import org.example.entity.UserEntity;
+import org.example.entity.StudentEntity;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
-import org.hibernate.boot.registry.StandardServiceRegistry;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 import org.hibernate.cfg.Configuration;
 import org.hibernate.cfg.Environment;
 import org.hibernate.service.ServiceRegistry;
 
-
-import javax.management.StandardEmitterMBean;
-
-public class HibernateUtil {
+public class HibernateSession {
     private static SessionFactory sessionFactory;
 
     public static Session getSession() {
@@ -25,8 +20,7 @@ public class HibernateUtil {
     private static void initSessionFactory(){
         Configuration configuration = new Configuration();
         configuration.addPackage("org.example.entity");
-        configuration.addAnnotatedClass(UserEntity.class);
-        configuration.addAnnotatedClass(AddressEntity.class);
+        configuration.addAnnotatedClass(StudentEntity.class);
 
         configuration.setProperty(Environment.URL, "jdbc:postgresql://localhost:5432/hillel");
         configuration.setProperty(Environment.DRIVER, "org.postgresql.Driver");
@@ -44,14 +38,5 @@ public class HibernateUtil {
 
         sessionFactory = configuration.buildSessionFactory(serviceRegistry);
 
-
-
-
-
-
     }
-
-
-
-
 }
