@@ -14,6 +14,7 @@ public class StudentDao {
         studentDao.update("Stepan", 3);
         studentDao.delete(4);
 
+
     }
 
     public void getAll() {
@@ -35,6 +36,8 @@ public class StudentDao {
             session.save(studentEntity1);
             session.save(studentEntity2);
             session.save(studentEntity3);
+            session.save(studentEntity4);
+
 
             session.getTransaction().commit();
         }
